@@ -1,6 +1,6 @@
 ## COINMETRICS
 
-Node.js wrapper for the Coinmetrics.io API.  API documentation can be found here: [https://coinmetrics.io/api/](https://coinmetrics.io/api/)
+Node.js wrapper for the Coinmetrics.io API.  Documentation can be found here: [https://coinmetrics.io/api/](https://coinmetrics.io/api/)
 
 ## INSTALLATION
 
@@ -8,7 +8,7 @@ Node.js wrapper for the Coinmetrics.io API.  API documentation can be found here
 npm install coinmetrics
 ```
 
-## USAGE with Promises
+## Usage with Async/Await
 
 ```js
 const coinmetrics = require('coinmetrics')
@@ -21,15 +21,43 @@ var assetData = await coinmetrics.getAssetDataForTimeRange(asset, data_type, beg
 
 ```
 
-## USAGE with Callbacks
+## Usage with Promises
 
 ```js
 const coinmetrics = require('coinmetrics')
 
-coinmetrics.getSupportedAssets((supportedAssets) => { console.log(supportedAssets) })
+coinmetrics.getSupportedAssets()
+  .then((results) => {
+    var supportedAssets = results
+  })
 
-coinmetrics.getAvailableDataTypesForAsset(asset, (dataTypes) => { console.log(dataTypes) })
+coinmetrics.getAvailableDataTypesForAsset(asset)
+  .then((results) => {
+    var dataTypes = results
+  })
 
-coinmetrics.getAssetDataForTimeRange(asset, data_type, begin_timestamp, end_timestamp, (assetData) => {console.log(assetData)})
+coinmetrics.getAssetDataForTimeRange(asset, data_type, begin_timestamp, end_timestamp)
+  .then((results) => {
+    var assetData = results
+  })
+
+```
+
+## Usage with Callbacks
+
+```js
+const coinmetrics = require('coinmetrics')
+
+coinmetrics.getSupportedAssets((results) => {
+  var supportedAssets = results
+})
+
+coinmetrics.getAvailableDataTypesForAsset(asset, (results) => {
+  var dataTypes = results
+})
+
+coinmetrics.getAssetDataForTimeRange(asset, data_type, begin_timestamp, end_timestamp, (results) => {
+  var assetData = results
+})
 
 ```
