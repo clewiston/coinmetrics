@@ -1,6 +1,6 @@
 {
   "name": "coinmetrics",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Client interface for the CoinMetrics.io API.",
   "main": "./lib/coinmetrics.js",
   "scripts": {
